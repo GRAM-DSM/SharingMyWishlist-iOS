@@ -37,7 +37,7 @@ class LoginViewController : UIViewController {
         $0.setTitleColor(UIColor(red: 0, green: 0.478, blue: 1, alpha: 1), for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 17)
     }
-    let signupButton = UIButton(type: .system).then {
+    let signupButton = UIButton().then {
         $0.setTitle("아직 계정이 없으세요?", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         $0.backgroundColor = .white
@@ -47,19 +47,6 @@ class LoginViewController : UIViewController {
         view.backgroundColor = .white
         super.viewDidLoad()
         setUp()
-        targets()
-    }
-    func targets(){
-        loginButton.addTarget(self, action: #selector(touchLoginButton), for: .touchUpInside)
-        signupButton.addTarget(self, action: #selector(touchSignUpButton), for: .touchUpInside)
-    }
-    @objc func touchLoginButton(id:String,password:String){
-        self.dismiss(animated: true)
-    }
-    @objc func touchSignUpButton(){
-        let vc = SignUpViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
     }
     private func setUp(){
         [logoImageView,idTextField,passwordTextField,loginButton,signupButton].forEach {view.addSubview($0)}
@@ -89,14 +76,6 @@ class LoginViewController : UIViewController {
             $0.centerX.equalToSuperview()
             $0.height.equalTo(19)
         }
-    }
-    private func alert(title:String,message:String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            self.dismiss(animated: true)
-        }
-        alert.addAction(okAction)
-        present(alert, animated: true, completion:nil)
     }
 }
 extension UITextField {
