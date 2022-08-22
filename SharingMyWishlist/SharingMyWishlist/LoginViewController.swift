@@ -28,7 +28,7 @@ class LoginViewController : UIViewController {
         $0.addLeftPadding()
         $0.layer.backgroundColor = UIColor(red: 0.976, green: 0.976, blue: 0.976, alpha: 1).cgColor
     }
-    private let loginButton = UIButton().then {
+    private let loginButton = UIButton(type: .system).then {
         $0.layer.cornerRadius = 12
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor(red: 0.898, green: 0.898, blue: 0.918, alpha: 1).cgColor
@@ -52,7 +52,7 @@ class LoginViewController : UIViewController {
         loginButton.addTarget(self, action: #selector(touchLoginButton), for: .touchUpInside)
         signupButton.addTarget(self, action: #selector(touchSignUpButton), for: .touchUpInside)
     }
-    @objc func touchLoginButton(id:String,password:String){
+    @objc func touchLoginButton(){
         self.dismiss(animated: true)
     }
     @objc func touchSignUpButton(){
@@ -62,7 +62,9 @@ class LoginViewController : UIViewController {
     }
     private func setUp(){
         view.backgroundColor = .white
-        [logoImageView,idTextField,passwordTextField,loginButton,signupButton].forEach {view.addSubview($0)}
+        [logoImageView,idTextField,passwordTextField,loginButton,signupButton].forEach {
+            view.addSubview($0)
+        }
         logoImageView.snp.makeConstraints {
             $0.top.greaterThanOrEqualToSuperview().inset(125)
             $0.centerX.equalToSuperview()

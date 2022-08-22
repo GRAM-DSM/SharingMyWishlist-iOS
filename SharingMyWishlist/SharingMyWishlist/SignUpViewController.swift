@@ -34,7 +34,7 @@ class SignUpViewController: UIViewController {
         $0.addLeftPadding()
         $0.layer.backgroundColor = UIColor(red: 0.976, green: 0.976, blue: 0.976, alpha: 1).cgColor
     }
-    private let signUpButton = UIButton().then {
+    private let signUpButton = UIButton(type: .system).then {
         $0.layer.cornerRadius = 12
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor(red: 0.898, green: 0.898, blue: 0.918, alpha: 1).cgColor
@@ -68,7 +68,8 @@ class SignUpViewController: UIViewController {
     }
     private func setUp(){
         view.backgroundColor = .white
-        [logoImageView,nickNameTextField,idTextField,passwordTextField,signUpButton,loginButton].forEach { view.addSubview($0)}
+        [logoImageView,nickNameTextField,idTextField,passwordTextField,signUpButton,loginButton].forEach { view.addSubview($0)
+        }
         logoImageView.snp.makeConstraints {
             $0.top.greaterThanOrEqualToSuperview().inset(81)
             $0.centerX.equalToSuperview()
