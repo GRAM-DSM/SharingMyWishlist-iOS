@@ -6,11 +6,11 @@ import Alamofire
 
 
 class LoginViewController : UIViewController {
-    let logoImageView = UIImageView().then {
+    private let logoImageView = UIImageView().then {
         $0.image = UIImage(named: "GRAM Logo-Bright 2")
         $0.contentMode = .scaleToFill
     }
-    let idTextField = UITextField().then {
+    private let idTextField = UITextField().then {
         $0.placeholder = "아이디를 입력하세요."
         $0.font = .systemFont(ofSize: 17)
         $0.layer.cornerRadius = 10
@@ -19,7 +19,7 @@ class LoginViewController : UIViewController {
         $0.addLeftPadding()
         $0.layer.backgroundColor = UIColor(red: 0.976, green: 0.976, blue: 0.976, alpha: 1).cgColor
     }
-    let passwordTextField = UITextField().then {
+    private let passwordTextField = UITextField().then {
         $0.placeholder = "비밀번호를 입력하세요."
         $0.font = .systemFont(ofSize: 17)
         $0.layer.cornerRadius = 10
@@ -28,7 +28,7 @@ class LoginViewController : UIViewController {
         $0.addLeftPadding()
         $0.layer.backgroundColor = UIColor(red: 0.976, green: 0.976, blue: 0.976, alpha: 1).cgColor
     }
-    let loginButton = UIButton().then {
+    private let loginButton = UIButton().then {
         $0.layer.cornerRadius = 12
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor(red: 0.898, green: 0.898, blue: 0.918, alpha: 1).cgColor
@@ -37,19 +37,18 @@ class LoginViewController : UIViewController {
         $0.setTitleColor(UIColor(red: 0, green: 0.478, blue: 1, alpha: 1), for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 17)
     }
-    let signupButton = UIButton(type: .system).then {
+    private let signupButton = UIButton(type: .system).then {
         $0.setTitle("아직 계정이 없으세요?", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         $0.backgroundColor = .white
         $0.setTitleColor(.black, for: .normal)
     }
     override func viewDidLoad() {
-        view.backgroundColor = .white
         super.viewDidLoad()
         setUp()
         targets()
     }
-    func targets(){
+    private func targets(){
         loginButton.addTarget(self, action: #selector(touchLoginButton), for: .touchUpInside)
         signupButton.addTarget(self, action: #selector(touchSignUpButton), for: .touchUpInside)
     }
@@ -62,6 +61,7 @@ class LoginViewController : UIViewController {
         self.present(vc, animated: true)
     }
     private func setUp(){
+        view.backgroundColor = .white
         [logoImageView,idTextField,passwordTextField,loginButton,signupButton].forEach {view.addSubview($0)}
         logoImageView.snp.makeConstraints {
             $0.top.greaterThanOrEqualToSuperview().inset(125)

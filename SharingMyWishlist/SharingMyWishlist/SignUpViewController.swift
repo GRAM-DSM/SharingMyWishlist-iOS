@@ -3,11 +3,11 @@ import Then
 import SnapKit
     
 class SignUpViewController: UIViewController {
-    let logoImageView = UIImageView().then {
+    private let logoImageView = UIImageView().then {
         $0.image = UIImage(named: "GRAM Logo-Bright 2")
         $0.contentMode = .scaleToFill
     }
-    let nickNameTextField = UITextField().then {
+    private let nickNameTextField = UITextField().then {
         $0.placeholder = "사용하실 이름을 입력하세요."
         $0.font = .systemFont(ofSize: 17)
         $0.layer.cornerRadius = 10
@@ -16,7 +16,7 @@ class SignUpViewController: UIViewController {
         $0.addLeftPadding()
         $0.layer.backgroundColor = UIColor(red: 0.976, green: 0.976, blue: 0.976, alpha: 1).cgColor
     }
-    let idTextField = UITextField().then {
+    private let idTextField = UITextField().then {
         $0.placeholder = "사용하실 아이디를 입력하세요."
         $0.font = .systemFont(ofSize: 17)
         $0.layer.cornerRadius = 10
@@ -25,7 +25,7 @@ class SignUpViewController: UIViewController {
         $0.addLeftPadding()
         $0.layer.backgroundColor = UIColor(red: 0.976, green: 0.976, blue: 0.976, alpha: 1).cgColor
     }
-    let passwordTextField = UITextField().then {
+    private let passwordTextField = UITextField().then {
         $0.placeholder = "사용하실 비밀번호를 입력하세요."
         $0.font = .systemFont(ofSize: 17)
         $0.layer.cornerRadius = 10
@@ -34,7 +34,7 @@ class SignUpViewController: UIViewController {
         $0.addLeftPadding()
         $0.layer.backgroundColor = UIColor(red: 0.976, green: 0.976, blue: 0.976, alpha: 1).cgColor
     }
-    let signUpButton = UIButton().then {
+    private let signUpButton = UIButton().then {
         $0.layer.cornerRadius = 12
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor(red: 0.898, green: 0.898, blue: 0.918, alpha: 1).cgColor
@@ -43,7 +43,7 @@ class SignUpViewController: UIViewController {
         $0.setTitleColor(UIColor(red: 0, green: 0.478, blue: 1, alpha: 1), for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 17)
     }
-    let loginButton = UIButton(type: .system).then {
+    private let loginButton = UIButton(type: .system).then {
         $0.setTitle("이미 계정이 있으세요?", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         $0.backgroundColor = .white
@@ -51,13 +51,12 @@ class SignUpViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         targets()
     }
     override func viewWillLayoutSubviews() {
         setUp()
     }
-    func targets(){
+    private func targets(){
         loginButton.addTarget(self, action: #selector(touchLoginButton), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(touchSignUpButton), for: .touchUpInside)
     }
@@ -67,7 +66,8 @@ class SignUpViewController: UIViewController {
     @objc func touchSignUpButton(){
         self.dismiss(animated: true)
     }
-    func setUp(){
+    private func setUp(){
+        view.backgroundColor = .white
         [logoImageView,nickNameTextField,idTextField,passwordTextField,signUpButton,loginButton].forEach { view.addSubview($0)}
         logoImageView.snp.makeConstraints {
             $0.top.greaterThanOrEqualToSuperview().inset(81)
