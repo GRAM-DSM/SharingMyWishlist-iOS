@@ -2,7 +2,8 @@
 import UIKit
 import SnapKit
 import Then
-//
+
+
 class MainViewController: UIViewController {
     let loginButton = UIButton(type: .system).then {
         $0.setTitle("로그인", for: .normal)

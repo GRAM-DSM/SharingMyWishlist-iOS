@@ -8,16 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		2E8C4F351F92F8AB47D68F50 /* Pods_SharingMyWishlist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70771440AB9DE1BAFFD9598 /* Pods_SharingMyWishlist.framework */; };
+		4B3D1DC328B4DE1700A55EC7 /* LoginDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D1DC228B4DE1700A55EC7 /* LoginDataModel.swift */; };
 		4B6B535128AA7C3E004FEFCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B535028AA7C3E004FEFCF /* AppDelegate.swift */; };
 		4B6B535328AA7C3E004FEFCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B535228AA7C3E004FEFCF /* SceneDelegate.swift */; };
 		4B6B535528AA7C3E004FEFCF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B535428AA7C3E004FEFCF /* MainViewController.swift */; };
 		4B6B535A28AA7C3F004FEFCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B6B535928AA7C3F004FEFCF /* Assets.xcassets */; };
 		4B6B535D28AA7C3F004FEFCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B6B535B28AA7C3F004FEFCF /* LaunchScreen.storyboard */; };
+		4BA3DC2628B4D266007BFA2D /* header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA3DC2528B4D266007BFA2D /* header.swift */; };
+		4BC47EB428B4C09E005C63E2 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC47EB328B4C09E005C63E2 /* Client.swift */; };
 		678ECA4A28ABCBC90092E744 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678ECA4928ABCBC90092E744 /* LoginViewController.swift */; };
 		67D9A96D28B36292003FF6B5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D9A96C28B36292003FF6B5 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B3D1DC228B4DE1700A55EC7 /* LoginDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataModel.swift; sourceTree = "<group>"; };
 		4B6B534D28AA7C3E004FEFCF /* SharingMyWishlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharingMyWishlist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B6B535028AA7C3E004FEFCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B6B535228AA7C3E004FEFCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -25,6 +29,8 @@
 		4B6B535928AA7C3F004FEFCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B6B535C28AA7C3F004FEFCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B6B535E28AA7C3F004FEFCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BA3DC2528B4D266007BFA2D /* header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = header.swift; sourceTree = "<group>"; };
+		4BC47EB328B4C09E005C63E2 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		678ECA4928ABCBC90092E744 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		67D9A96C28B36292003FF6B5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		94F0C6DEC760004801553F21 /* Pods-SharingMyWishlist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharingMyWishlist.release.xcconfig"; path = "Target Support Files/Pods-SharingMyWishlist/Pods-SharingMyWishlist.release.xcconfig"; sourceTree = "<group>"; };
@@ -44,6 +50,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B3D1DC128B4DD2200A55EC7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4B3D1DC228B4DE1700A55EC7 /* LoginDataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4B6B534428AA7C3E004FEFCF = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +79,9 @@
 		4B6B534F28AA7C3E004FEFCF /* SharingMyWishlist */ = {
 			isa = PBXGroup;
 			children = (
+				4B3D1DC128B4DD2200A55EC7 /* Model */,
+				4BC47EB528B4C7A9005C63E2 /* Header */,
+				4BC47EB228B4C083005C63E2 /* HttpClient */,
 				4B6B535028AA7C3E004FEFCF /* AppDelegate.swift */,
 				4B6B535228AA7C3E004FEFCF /* SceneDelegate.swift */,
 				4B6B535428AA7C3E004FEFCF /* MainViewController.swift */,
@@ -75,6 +92,22 @@
 				4B6B535E28AA7C3F004FEFCF /* Info.plist */,
 			);
 			path = SharingMyWishlist;
+			sourceTree = "<group>";
+		};
+		4BC47EB228B4C083005C63E2 /* HttpClient */ = {
+			isa = PBXGroup;
+			children = (
+				4BC47EB328B4C09E005C63E2 /* Client.swift */,
+			);
+			path = HttpClient;
+			sourceTree = "<group>";
+		};
+		4BC47EB528B4C7A9005C63E2 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				4BA3DC2528B4D266007BFA2D /* header.swift */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 		590312FAB926DC70E5583AFF /* Frameworks */ = {
@@ -210,7 +243,10 @@
 			files = (
 				678ECA4A28ABCBC90092E744 /* LoginViewController.swift in Sources */,
 				4B6B535528AA7C3E004FEFCF /* MainViewController.swift in Sources */,
+				4BC47EB428B4C09E005C63E2 /* Client.swift in Sources */,
+				4B3D1DC328B4DE1700A55EC7 /* LoginDataModel.swift in Sources */,
 				4B6B535128AA7C3E004FEFCF /* AppDelegate.swift in Sources */,
+				4BA3DC2628B4D266007BFA2D /* header.swift in Sources */,
 				4B6B535328AA7C3E004FEFCF /* SceneDelegate.swift in Sources */,
 				67D9A96D28B36292003FF6B5 /* SignUpViewController.swift in Sources */,
 			);

@@ -2,15 +2,14 @@
 import SnapKit
 import UIKit
 import Then
-import Alamofire
 
 
 class LoginViewController : UIViewController {
-    private let logoImageView = UIImageView().then {
+    private var logoImageView = UIImageView().then {
         $0.image = UIImage(named: "GRAM Logo-Bright 2")
         $0.contentMode = .scaleToFill
     }
-    private let idTextField = UITextField().then {
+    private var idTextField = UITextField().then {
         $0.placeholder = "아이디를 입력하세요."
         $0.font = .systemFont(ofSize: 17)
         $0.layer.cornerRadius = 10
@@ -55,7 +54,31 @@ class LoginViewController : UIViewController {
         signupButton.addTarget(self, action: #selector(touchSignUpButton), for: .touchUpInside)
     }
     @objc func touchLoginButton(){
-        self.dismiss(animated: true)
+        guard let userId = idTextField.text, userId.isEmpty == false else { return }
+        guard let userPw = passwordTextField.text, userPw.isEmpty == false else { return }
+        
+        MY.request(.signIn(userID: userId, password: userPw)) { res in
+            switch res {
+            case .success(let result):
+                switch result.statusCode {
+                case 200:
+                    DispatchQueue.main.async {
+                        self.alert(title: "안내", message: "로그인이 성공적으로 완료되었습니다.")
+                    }
+                    let decoder = JSONDecoder()
+                    if let data = try? decoder.decode(loginDataModel.self, from: result.data) {
+                        Token.accessToken = data.accessToken
+                        print("acc: \(Token._accessToken!)")
+                    } else {
+                        print("decoder error")
+                    }
+                default:
+                    print("status \(result.statusCode)")
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
     }
     @objc func touchSignUpButton(){
         let vc = SignUpViewController()

@@ -64,7 +64,32 @@ class SignUpViewController: UIViewController {
         self.dismiss(animated: true)
     }
     @objc func touchSignUpButton(){
-        self.dismiss(animated: true)
+        guard let nickname = nickNameTextField.text, nickname.isEmpty == false else { return }
+        guard let userId = idTextField.text, userId.isEmpty == false else { return }
+        guard let userPw = passwordTextField.text, userPw.isEmpty == false else { return }
+        
+        MY.request(.signUp(userID: userId, password: userPw, nickname: nickname)) { res in
+            switch res {
+            case .success(let result):
+                switch result.statusCode {
+                case 200:
+                    self.alert(title: "안내", message: "회원가입이 완료되었습니다.")
+                default:
+                    print("result error (\(result.statusCode)")
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
+        
+    }
+    private func alert(title:String,message:String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.dismiss(animated: true)
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion:nil)
     }
     private func setUp(){
         view.backgroundColor = .white
