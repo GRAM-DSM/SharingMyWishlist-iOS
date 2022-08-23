@@ -10,21 +10,23 @@
 		2E8C4F351F92F8AB47D68F50 /* Pods_SharingMyWishlist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70771440AB9DE1BAFFD9598 /* Pods_SharingMyWishlist.framework */; };
 		4B6B535128AA7C3E004FEFCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B535028AA7C3E004FEFCF /* AppDelegate.swift */; };
 		4B6B535328AA7C3E004FEFCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B535228AA7C3E004FEFCF /* SceneDelegate.swift */; };
-		4B6B535528AA7C3E004FEFCF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B535428AA7C3E004FEFCF /* ViewController.swift */; };
+		4B6B535528AA7C3E004FEFCF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B535428AA7C3E004FEFCF /* MainViewController.swift */; };
 		4B6B535A28AA7C3F004FEFCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B6B535928AA7C3F004FEFCF /* Assets.xcassets */; };
 		4B6B535D28AA7C3F004FEFCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B6B535B28AA7C3F004FEFCF /* LaunchScreen.storyboard */; };
 		678ECA4A28ABCBC90092E744 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678ECA4928ABCBC90092E744 /* LoginViewController.swift */; };
+		67D9A96D28B36292003FF6B5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D9A96C28B36292003FF6B5 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4B6B534D28AA7C3E004FEFCF /* SharingMyWishlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharingMyWishlist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B6B535028AA7C3E004FEFCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B6B535228AA7C3E004FEFCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4B6B535428AA7C3E004FEFCF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4B6B535428AA7C3E004FEFCF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4B6B535928AA7C3F004FEFCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B6B535C28AA7C3F004FEFCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B6B535E28AA7C3F004FEFCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		678ECA4928ABCBC90092E744 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		67D9A96C28B36292003FF6B5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		94F0C6DEC760004801553F21 /* Pods-SharingMyWishlist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharingMyWishlist.release.xcconfig"; path = "Target Support Files/Pods-SharingMyWishlist/Pods-SharingMyWishlist.release.xcconfig"; sourceTree = "<group>"; };
 		B502297C79B3F731D7517E81 /* Pods-SharingMyWishlist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharingMyWishlist.debug.xcconfig"; path = "Target Support Files/Pods-SharingMyWishlist/Pods-SharingMyWishlist.debug.xcconfig"; sourceTree = "<group>"; };
 		C70771440AB9DE1BAFFD9598 /* Pods_SharingMyWishlist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SharingMyWishlist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,8 +67,9 @@
 			children = (
 				4B6B535028AA7C3E004FEFCF /* AppDelegate.swift */,
 				4B6B535228AA7C3E004FEFCF /* SceneDelegate.swift */,
-				4B6B535428AA7C3E004FEFCF /* ViewController.swift */,
+				4B6B535428AA7C3E004FEFCF /* MainViewController.swift */,
 				678ECA4928ABCBC90092E744 /* LoginViewController.swift */,
+				67D9A96C28B36292003FF6B5 /* SignUpViewController.swift */,
 				4B6B535928AA7C3F004FEFCF /* Assets.xcassets */,
 				4B6B535B28AA7C3F004FEFCF /* LaunchScreen.storyboard */,
 				4B6B535E28AA7C3F004FEFCF /* Info.plist */,
@@ -206,9 +209,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				678ECA4A28ABCBC90092E744 /* LoginViewController.swift in Sources */,
-				4B6B535528AA7C3E004FEFCF /* ViewController.swift in Sources */,
+				4B6B535528AA7C3E004FEFCF /* MainViewController.swift in Sources */,
 				4B6B535128AA7C3E004FEFCF /* AppDelegate.swift in Sources */,
 				4B6B535328AA7C3E004FEFCF /* SceneDelegate.swift in Sources */,
+				67D9A96D28B36292003FF6B5 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
