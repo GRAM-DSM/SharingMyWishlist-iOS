@@ -45,8 +45,10 @@ class LoginViewController : UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUp()
         targets()
+    }
+    override func viewWillLayoutSubviews() {
+        setUp()
     }
     private func targets(){
         loginButton.addTarget(self, action: #selector(touchLoginButton), for: .touchUpInside)
