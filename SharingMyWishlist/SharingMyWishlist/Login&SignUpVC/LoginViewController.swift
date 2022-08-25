@@ -62,13 +62,14 @@ class LoginViewController : UIViewController {
             case .success(let result):
                 switch result.statusCode {
                 case 200:
-                    DispatchQueue.main.async {
-                        self.alert(title: "안내", message: "로그인이 성공적으로 완료되었습니다.")
-                    }
                     let decoder = JSONDecoder()
                     if let data = try? decoder.decode(loginDataModel.self, from: result.data) {
                         Token.accessToken = data.accessToken
+                        DispatchQueue.main.async {
+                            self.dismiss(animated: true)
+                        }
                         print("acc: \(Token._accessToken!)")
+                        
                     } else {
                         print("decoder error")
                     }
