@@ -11,17 +11,17 @@ class ListTableViewCell: UITableViewCell {
     //MARK: - Items
     
     //Labels
-    private let titleLabel = UILabel().then {
+    let titleLabel = UILabel().then {
         $0.text = "title"
         $0.font = UIFont.boldSystemFont(ofSize: 25)
     }
     
-    private let contentLabel = UILabel().then {
+    let contentLabel = UILabel().then {
         $0.text = "content"
         $0.numberOfLines = .max
     }
     
-    private let userLabel = UILabel().then {
+    let userLabel = UILabel().then {
         $0.text = "user"
         $0.font = UIFont.systemFont(ofSize: 20)
         $0.textColor = .lightGray
