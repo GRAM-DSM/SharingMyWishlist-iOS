@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2E8C4F351F92F8AB47D68F50 /* Pods_SharingMyWishlist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70771440AB9DE1BAFFD9598 /* Pods_SharingMyWishlist.framework */; };
 		4B3D1DC328B4DE1700A55EC7 /* LoginDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D1DC228B4DE1700A55EC7 /* LoginDataModel.swift */; };
+		4B3D1DC528B511D500A55EC7 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D1DC428B511D500A55EC7 /* ListTableViewCell.swift */; };
+		4B3D1DC728B5189500A55EC7 /* ListDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D1DC628B5189500A55EC7 /* ListDataModel.swift */; };
+		4B69601928B6187E0068B04C /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B69601828B6187E0068B04C /* AddListViewController.swift */; };
 		4B6B535128AA7C3E004FEFCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B535028AA7C3E004FEFCF /* AppDelegate.swift */; };
 		4B6B535328AA7C3E004FEFCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B535228AA7C3E004FEFCF /* SceneDelegate.swift */; };
 		4B6B535528AA7C3E004FEFCF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B535428AA7C3E004FEFCF /* MainViewController.swift */; };
@@ -22,6 +25,9 @@
 
 /* Begin PBXFileReference section */
 		4B3D1DC228B4DE1700A55EC7 /* LoginDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataModel.swift; sourceTree = "<group>"; };
+		4B3D1DC428B511D500A55EC7 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		4B3D1DC628B5189500A55EC7 /* ListDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataModel.swift; sourceTree = "<group>"; };
+		4B69601828B6187E0068B04C /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
 		4B6B534D28AA7C3E004FEFCF /* SharingMyWishlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharingMyWishlist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B6B535028AA7C3E004FEFCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B6B535228AA7C3E004FEFCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,8 +60,29 @@
 			isa = PBXGroup;
 			children = (
 				4B3D1DC228B4DE1700A55EC7 /* LoginDataModel.swift */,
+				4B3D1DC628B5189500A55EC7 /* ListDataModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4B69601A28B619030068B04C /* Login&SignUpVC */ = {
+			isa = PBXGroup;
+			children = (
+				4B6B535028AA7C3E004FEFCF /* AppDelegate.swift */,
+				67D9A96C28B36292003FF6B5 /* SignUpViewController.swift */,
+				678ECA4928ABCBC90092E744 /* LoginViewController.swift */,
+			);
+			path = "Login&SignUpVC";
+			sourceTree = "<group>";
+		};
+		4B69601B28B6192D0068B04C /* wishListVC */ = {
+			isa = PBXGroup;
+			children = (
+				4B6B535428AA7C3E004FEFCF /* MainViewController.swift */,
+				4B3D1DC428B511D500A55EC7 /* ListTableViewCell.swift */,
+				4B69601828B6187E0068B04C /* AddListViewController.swift */,
+			);
+			path = wishListVC;
 			sourceTree = "<group>";
 		};
 		4B6B534428AA7C3E004FEFCF = {
@@ -82,11 +109,9 @@
 				4B3D1DC128B4DD2200A55EC7 /* Model */,
 				4BC47EB528B4C7A9005C63E2 /* Header */,
 				4BC47EB228B4C083005C63E2 /* HttpClient */,
-				4B6B535028AA7C3E004FEFCF /* AppDelegate.swift */,
+				4B69601A28B619030068B04C /* Login&SignUpVC */,
+				4B69601B28B6192D0068B04C /* wishListVC */,
 				4B6B535228AA7C3E004FEFCF /* SceneDelegate.swift */,
-				4B6B535428AA7C3E004FEFCF /* MainViewController.swift */,
-				678ECA4928ABCBC90092E744 /* LoginViewController.swift */,
-				67D9A96C28B36292003FF6B5 /* SignUpViewController.swift */,
 				4B6B535928AA7C3F004FEFCF /* Assets.xcassets */,
 				4B6B535B28AA7C3F004FEFCF /* LaunchScreen.storyboard */,
 				4B6B535E28AA7C3F004FEFCF /* Info.plist */,
@@ -244,8 +269,11 @@
 				678ECA4A28ABCBC90092E744 /* LoginViewController.swift in Sources */,
 				4B6B535528AA7C3E004FEFCF /* MainViewController.swift in Sources */,
 				4BC47EB428B4C09E005C63E2 /* Client.swift in Sources */,
+				4B69601928B6187E0068B04C /* AddListViewController.swift in Sources */,
+				4B3D1DC728B5189500A55EC7 /* ListDataModel.swift in Sources */,
 				4B3D1DC328B4DE1700A55EC7 /* LoginDataModel.swift in Sources */,
 				4B6B535128AA7C3E004FEFCF /* AppDelegate.swift in Sources */,
+				4B3D1DC528B511D500A55EC7 /* ListTableViewCell.swift in Sources */,
 				4BA3DC2628B4D266007BFA2D /* header.swift in Sources */,
 				4B6B535328AA7C3E004FEFCF /* SceneDelegate.swift in Sources */,
 				67D9A96D28B36292003FF6B5 /* SignUpViewController.swift in Sources */,
