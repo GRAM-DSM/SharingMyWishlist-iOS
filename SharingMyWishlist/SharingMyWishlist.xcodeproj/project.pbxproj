@@ -68,7 +68,6 @@
 		4B69601A28B619030068B04C /* Login&SignUpVC */ = {
 			isa = PBXGroup;
 			children = (
-				4B6B535028AA7C3E004FEFCF /* AppDelegate.swift */,
 				67D9A96C28B36292003FF6B5 /* SignUpViewController.swift */,
 				678ECA4928ABCBC90092E744 /* LoginViewController.swift */,
 			);
@@ -112,6 +111,7 @@
 				4B69601A28B619030068B04C /* Login&SignUpVC */,
 				4B69601B28B6192D0068B04C /* wishListVC */,
 				4B6B535228AA7C3E004FEFCF /* SceneDelegate.swift */,
+				4B6B535028AA7C3E004FEFCF /* AppDelegate.swift */,
 				4B6B535928AA7C3F004FEFCF /* Assets.xcassets */,
 				4B6B535B28AA7C3F004FEFCF /* LaunchScreen.storyboard */,
 				4B6B535E28AA7C3F004FEFCF /* Info.plist */,
