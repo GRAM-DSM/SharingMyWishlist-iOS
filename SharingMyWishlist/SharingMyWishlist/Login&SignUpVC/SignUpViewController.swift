@@ -75,7 +75,7 @@ class SignUpViewController: UIViewController {
                 case 200:
                     self.alert(title: "안내", message: "회원가입이 완료되었습니다.")
                 default:
-                    print("result error (\(result.statusCode)")
+                    print("SignUp: result error (\(result.statusCode)")
                 }
             case .failure(let err):
                 print(err)
