@@ -194,8 +194,7 @@ class AddListViewController: UIViewController {
 
     @objc func okButtonClick() {
         guard let title = titleTextField.text, title.isEmpty == false else { return }
-        guard let content = contentTextView.text, content.isEmpty == false else { return }
-        
+        let content = contentTextView.text ?? ""
         MY.request(.listCreate(title: title, contents: content, color: seletListColor)) { res in
             switch res {
             case .success(let result):

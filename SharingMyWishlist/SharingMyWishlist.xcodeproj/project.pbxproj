@@ -78,8 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				4B6B535428AA7C3E004FEFCF /* MainViewController.swift */,
-				4B3D1DC428B511D500A55EC7 /* ListTableViewCell.swift */,
 				4B69601828B6187E0068B04C /* AddListViewController.swift */,
+				4B3D1DC428B511D500A55EC7 /* ListTableViewCell.swift */,
 			);
 			path = wishListVC;
 			sourceTree = "<group>";
