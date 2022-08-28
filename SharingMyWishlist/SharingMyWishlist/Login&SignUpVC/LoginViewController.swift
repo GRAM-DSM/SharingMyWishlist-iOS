@@ -68,13 +68,11 @@ class LoginViewController : UIViewController {
                         DispatchQueue.main.async {
                             self.dismiss(animated: true)
                         }
-                        print("acc: \(Token._accessToken!)")
-                        
                     } else {
-                        print("decoder error")
+                        print("Login: decoder error")
                     }
                 default:
-                    print("status \(result.statusCode)")
+                    print("Login: status \(result.statusCode)")
                 }
             case .failure(let err):
                 print(err)

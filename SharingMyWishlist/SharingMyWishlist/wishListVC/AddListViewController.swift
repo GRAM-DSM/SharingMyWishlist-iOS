@@ -4,18 +4,18 @@ import SnapKit
 
 class AddListViewController: UIViewController {
     
-    var seletListColor: String = "list-white"
+    var seletListColor: String = "wish-nor"
     
     //MARK: - Items
     
     //UIbarButtonItems
     private let okButton = UIBarButtonItem().then {
-        $0.title = "Ok"
+        $0.title = "완료"
         $0.action = #selector(okButtonClick)
     }
     
     private let cancelButton = UIBarButtonItem().then {
-        $0.title = "Cancel"
+        $0.title = "취소"
         $0.tintColor = UIColor.red
         $0.action = #selector(cancelButtonClick)
     }
@@ -48,31 +48,31 @@ class AddListViewController: UIViewController {
     
     //colorButtons
     private let whiteColorButton = UIButton(type: .system).then {
-        $0.layer.borderWidth = 5
+        $0.layer.borderWidth = 3
         $0.layer.borderColor = UIColor(named: "layer-white")?.cgColor
         $0.backgroundColor = UIColor(named: "wish-nor")
-        $0.layer.cornerRadius = 12
+        $0.layer.cornerRadius = 8
         $0.tag = 1
     }
     private let redColorButton = UIButton(type: .system).then {
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor(named: "layer-white")?.cgColor
         $0.backgroundColor = UIColor(named: "wish-red")
-        $0.layer.cornerRadius = 12
+        $0.layer.cornerRadius = 8
         $0.tag = 2
     }
     private let greenColorButton = UIButton(type: .system).then {
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor(named: "layer-white")?.cgColor
-        $0.backgroundColor = UIColor(named: "wish-green")
-        $0.layer.cornerRadius = 12
+        $0.backgroundColor = UIColor(named: "wish-gre")
+        $0.layer.cornerRadius = 8
         $0.tag = 3
     }
     private let blueColorButton = UIButton(type: .system).then {
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor(named: "layer-white")?.cgColor
-        $0.backgroundColor = UIColor(named: "wish-blue")
-        $0.layer.cornerRadius = 12
+        $0.backgroundColor = UIColor(named: "wish-blu")
+        $0.layer.cornerRadius = 8
         $0.tag = 4
     }
     
@@ -111,7 +111,7 @@ class AddListViewController: UIViewController {
         [titleLabel, contentLabel, titleTextField, contentTextView, whiteColorButton, redColorButton, greenColorButton, blueColorButton].forEach({ self.view.addSubview($0) })
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.view.snp.top).inset(150)
+            $0.top.lessThanOrEqualToSuperview().inset(100)
             $0.left.equalToSuperview().inset(20)
         }
         
@@ -172,21 +172,21 @@ class AddListViewController: UIViewController {
         switch sender.tag {
         case 1:
             layerColor = "layer-white"
-            seletListColor = "list-nor"
+            seletListColor = "wish-nor"
         case 2:
             layerColor = "layer-red"
-            seletListColor = "list-red"
+            seletListColor = "wish-red"
         case 3:
             layerColor = "layer-green"
-            seletListColor = "list-green"
+            seletListColor = "wish-gre"
         case 4:
             layerColor = "layer-blue"
-            seletListColor = "list-blue"
+            seletListColor = "wish-blu"
         default:
             layerColor = ""
         }
 
-        sender.layer.borderWidth = 5
+        sender.layer.borderWidth = 3
         sender.layer.borderColor = UIColor(named: layerColor)?.cgColor
     }
     
@@ -201,13 +201,14 @@ class AddListViewController: UIViewController {
             case .success(let result):
                 switch result.statusCode {
                 case 200:
+                    print("Create: \(result)")
                     self.navigationController?.popViewController(animated: true)
                 case 403:
                     let vc = LoginViewController()
                     vc.modalPresentationStyle = .fullScreen
                     self.present(vc, animated: true)
                 default:
-                    print("status err (\(result.statusCode))")
+                    print("create: status err (\(result.statusCode))")
                 }
             case .failure(let err):
                 print(err)
