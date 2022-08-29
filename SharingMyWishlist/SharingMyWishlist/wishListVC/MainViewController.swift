@@ -78,7 +78,7 @@ class MainViewController: UIViewController {
                     let decoder = JSONDecoder()
                     if let data = try? decoder.decode(ListDataModel.self, from: result.data) {
                         DispatchQueue.main.async {
-                            listData = data.map {
+                            listData = data.wishResponseList.map {
                                 let title = $0.title
                                 let content = $0.contents
                                 let writer = $0.writer
