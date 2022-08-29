@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E8C4F351F92F8AB47D68F50 /* Pods_SharingMyWishlist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C70771440AB9DE1BAFFD9598 /* Pods_SharingMyWishlist.framework */; };
+		4B2EF14228BC55BC0051C745 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EF14128BC55BC0051C745 /* ListDetailViewController.swift */; };
 		4B3D1DC328B4DE1700A55EC7 /* LoginDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D1DC228B4DE1700A55EC7 /* LoginDataModel.swift */; };
 		4B3D1DC528B511D500A55EC7 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D1DC428B511D500A55EC7 /* ListTableViewCell.swift */; };
 		4B3D1DC728B5189500A55EC7 /* ListDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D1DC628B5189500A55EC7 /* ListDataModel.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B2EF14128BC55BC0051C745 /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 		4B3D1DC228B4DE1700A55EC7 /* LoginDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataModel.swift; sourceTree = "<group>"; };
 		4B3D1DC428B511D500A55EC7 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		4B3D1DC628B5189500A55EC7 /* ListDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataModel.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				4B6B535428AA7C3E004FEFCF /* MainViewController.swift */,
 				4B69601828B6187E0068B04C /* AddListViewController.swift */,
 				4B3D1DC428B511D500A55EC7 /* ListTableViewCell.swift */,
+				4B2EF14128BC55BC0051C745 /* ListDetailViewController.swift */,
 			);
 			path = wishListVC;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				678ECA4A28ABCBC90092E744 /* LoginViewController.swift in Sources */,
 				4B6B535528AA7C3E004FEFCF /* MainViewController.swift in Sources */,
 				4BC47EB428B4C09E005C63E2 /* Client.swift in Sources */,
+				4B2EF14228BC55BC0051C745 /* ListDetailViewController.swift in Sources */,
 				4B69601928B6187E0068B04C /* AddListViewController.swift in Sources */,
 				4B3D1DC728B5189500A55EC7 /* ListDataModel.swift in Sources */,
 				4B3D1DC328B4DE1700A55EC7 /* LoginDataModel.swift in Sources */,
