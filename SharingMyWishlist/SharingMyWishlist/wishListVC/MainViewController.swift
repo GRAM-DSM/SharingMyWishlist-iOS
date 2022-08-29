@@ -101,7 +101,7 @@ class MainViewController: UIViewController {
                     print("AllList: status err (\(result.statusCode))")
                 }
             case .failure(let err):
-                print(err)
+                print("AllList respons fail: \(err.localizedDescription)")
             }
         }
     }
@@ -177,6 +177,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 
             }
         }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = ListDetailViewController()
+        vc.listData = listData[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130

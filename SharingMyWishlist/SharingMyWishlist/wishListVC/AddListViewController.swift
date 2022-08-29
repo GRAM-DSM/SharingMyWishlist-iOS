@@ -200,17 +200,16 @@ class AddListViewController: UIViewController {
             case .success(let result):
                 switch result.statusCode {
                 case 200:
-                    print("Create: \(result)")
                     self.navigationController?.popViewController(animated: true)
                 case 403:
                     let vc = LoginViewController()
                     vc.modalPresentationStyle = .fullScreen
                     self.present(vc, animated: true)
                 default:
-                    print("create: status err (\(result.statusCode))")
+                    print("Create: status err (\(result.statusCode))")
                 }
             case .failure(let err):
-                print(err)
+                print("Create respons fail: \(err.localizedDescription)")
             }
         }
     }
