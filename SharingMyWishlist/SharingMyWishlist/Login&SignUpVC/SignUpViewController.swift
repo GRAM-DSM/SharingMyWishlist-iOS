@@ -78,7 +78,7 @@ class SignUpViewController: UIViewController {
                     print("SignUp: result error (\(result.statusCode)")
                 }
             case .failure(let err):
-                print(err)
+                print("SignUp respons fail: \(err.localizedDescription)")
             }
         }
         

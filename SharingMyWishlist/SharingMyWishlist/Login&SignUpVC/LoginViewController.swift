@@ -75,7 +75,7 @@ class LoginViewController : UIViewController {
                     print("Login: status \(result.statusCode)")
                 }
             case .failure(let err):
-                print(err)
+                print("Login respons fail: \(err.localizedDescription)")
             }
         }
     }

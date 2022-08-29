@@ -117,7 +117,7 @@ class ListTableViewCell: UITableViewCell {
                     print("Clear: error")
                 }
             case .failure(let err):
-                print(err)
+                print("Clear respons fail: \(err.localizedDescription)")
             }
         }
     }
