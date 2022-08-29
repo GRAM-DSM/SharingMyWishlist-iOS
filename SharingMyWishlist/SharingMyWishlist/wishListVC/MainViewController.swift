@@ -17,6 +17,11 @@ class MainViewController: UIViewController {
         $0.image = UIImage(systemName: "plus.app")
         $0.action = #selector(addListButtonClick)
     }
+    
+    private let logoutButton = UIBarButtonItem().then {
+        $0.image = UIImage(systemName: "person.fill.badge.minus")
+        $0.action = #selector(logoutButtonClick)
+    }
 
     private let refresh = UIRefreshControl()
     //MARK: - viewDidLoad
@@ -44,11 +49,13 @@ class MainViewController: UIViewController {
         }
         navigationItem.title = "Wishes"
         navigationItem.rightBarButtonItem = self.addListButton
+        navigationItem.leftBarButtonItem = self.logoutButton
     }
     
     private func targets() {
         refresh.addTarget(self, action: #selector(updateUI(refresh:)), for: .valueChanged)
         addListButton.target = self
+        logoutButton.target = self
     }
     
     private func tableSetting() {
@@ -105,11 +112,24 @@ class MainViewController: UIViewController {
         self.navigationController?.pushViewController(AddListViewController(), animated: true)
     }
     
+    @objc func logoutButtonClick() {
+        let logoutAlert = UIAlertController(title: "로그아웃", message: "로그아웃 하시겠습니까?", preferredStyle: .actionSheet)
+        let alertActionLogout = UIAlertAction(title: "로그아웃", style: .destructive) { _ in
+            Token.removeToken()
+            let vc = LoginViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+        }
+        let alertActionCancel = UIAlertAction(title: "취소", style: .cancel)
+        [alertActionLogout, alertActionCancel].forEach( {logoutAlert.addAction($0)} )
+        self.present(logoutAlert, animated: true)
+    }
+    
     @objc func updateUI(refresh: UIRefreshControl) {
         self.getListData()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.listTableView.reloadData()
             refresh.endRefreshing()
+            self.listTableView.reloadData()
         }
     }
 
