@@ -17,7 +17,8 @@ class MainViewController: UIViewController {
         $0.image = UIImage(systemName: "plus.app")
         $0.action = #selector(addListButtonClick)
     }
-    
+
+    private let refresh = UIRefreshControl()
     //MARK: - viewDidLoad
 
     override func viewDidLoad() {
@@ -46,6 +47,7 @@ class MainViewController: UIViewController {
     }
     
     private func targets() {
+        refresh.addTarget(self, action: #selector(updateUI(refresh:)), for: .valueChanged)
         addListButton.target = self
     }
     
@@ -55,6 +57,7 @@ class MainViewController: UIViewController {
         listTableView.register(ListTableViewCell.self, forCellReuseIdentifier: "ListTableViewCell")
         listTableView.rowHeight = UITableView.automaticDimension
         listTableView.estimatedRowHeight = UITableView.automaticDimension
+        listTableView.refreshControl = refresh
     }
     
     //MARK: - Setting
@@ -101,6 +104,15 @@ class MainViewController: UIViewController {
     @objc func addListButtonClick() {
         self.navigationController?.pushViewController(AddListViewController(), animated: true)
     }
+    
+    @objc func updateUI(refresh: UIRefreshControl) {
+        self.getListData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.listTableView.reloadData()
+            refresh.endRefreshing()
+        }
+    }
+
 }
 
 //MARK: - extension
