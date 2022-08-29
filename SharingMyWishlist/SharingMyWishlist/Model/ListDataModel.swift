@@ -1,15 +1,18 @@
 import Foundation
 
+struct ListDataModel: Codable {
+    let wishResponseList: [ListDataModelElement]
+}
+
 // MARK: - ListDataModelElement
 struct ListDataModelElement: Codable {
-    let id, listDataModelID: Int
+    let listDataModelID: Int
     let title, contents, writer: String
     let clear: Bool
     let color: String
     let comments: [Comment]
 
     enum CodingKeys: String, CodingKey {
-        case id = "@id"
         case listDataModelID = "id"
         case title, contents, writer, clear, color, comments
     }
@@ -21,8 +24,6 @@ struct Comment: Codable {
     let nickName, comment: String
     let wishList: Int
 }
-
-typealias ListDataModel = [ListDataModelElement]
 
 //MARK: - listForm
 
