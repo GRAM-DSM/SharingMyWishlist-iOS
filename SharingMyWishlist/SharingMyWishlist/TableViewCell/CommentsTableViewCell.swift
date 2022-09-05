@@ -31,13 +31,12 @@ class CommentsTableViewCell: UITableViewCell {
     private func cellStting() {
         [userLabel, commentsLabel].forEach( {self.addSubview($0)} )
         userLabel.snp.makeConstraints {
-            $0.left.lessThanOrEqualToSuperview().inset(2)
-            $0.top.lessThanOrEqualToSuperview().inset(8)
+            $0.left.lessThanOrEqualToSuperview().inset(50)
+            $0.top.equalToSuperview().inset(8)
         }
         commentsLabel.snp.makeConstraints {
-            $0.left.lessThanOrEqualToSuperview().inset(2)
-            $0.top.equalTo(userLabel.snp.bottom)
-            $0.right.lessThanOrEqualToSuperview().inset(16)
+            $0.left.lessThanOrEqualToSuperview().inset(50)
+            $0.top.equalTo(userLabel.snp.bottom).offset(8)
         }
         
     }
