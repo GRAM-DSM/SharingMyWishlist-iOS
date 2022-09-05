@@ -31,7 +31,7 @@ extension listService: TargetType {
         case .listDelete(let listID):
             return "/wish/delete/\(listID)"
         case .listInfo(let listID):
-            return "/wish/\(listID)"
+            return "/comment/\(listID)"
         case .listAll:
             return "/wish/all"
         case .listComment(let listID, _):
