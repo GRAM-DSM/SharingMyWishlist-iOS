@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+// MARK: - CommentResponseList
+struct CommentResponseList: Codable {
+    let id: Int
+    let nickName, comment, createdAt: String
+}

@@ -7,10 +7,6 @@
 
 import Foundation
 
-struct CommentsModel: Codable {
-    let id: Int
-    let title, contents, writer: String
-    let clear: Bool
-    let color: String
-    let comments: [Comment]
+struct ListDataAllModel: Codable {
+    var commentResponseList: [CommentResponseList]
 }
