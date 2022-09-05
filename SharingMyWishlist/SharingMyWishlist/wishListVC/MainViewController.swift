@@ -38,15 +38,18 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        setUp()
+        makeConstraints()
+        navigationSet()
     }
-    private func setUp(){
+    private func makeConstraints(){
         [listTableView].forEach( {view.addSubview($0)} )
         view.backgroundColor = .white
         
         listTableView.snp.makeConstraints {
             $0.width.height.equalToSuperview()
         }
+    }
+    private func navigationSet(){
         navigationItem.title = "Wishes"
         navigationItem.rightBarButtonItem = self.addListButton
         navigationItem.leftBarButtonItem = self.logoutButton
@@ -79,15 +82,16 @@ class MainViewController: UIViewController {
                     if let data = try? decoder.decode(ListDataModel.self, from: result.data) {
                         DispatchQueue.main.async {
                             listData = data.wishResponseList.map {
+                                let id = $0.id
                                 let title = $0.title
-                                let content = $0.contents
+                                let contents = $0.contents
                                 let writer = $0.writer
-                                let color = $0.color
                                 let clear = $0.clear
-                                let id = $0.listDataModelID
-                                
-                                return listForm(title: title, content: content, writer: writer, color: color, clear: clear, id: id)
+                                let color = $0.color
+                                let createdAt = $0.createdAt
+                                return listForm(title: title, contents: contents, writer: writer, color: color, clear: clear, id: id, createdAt: createdAt)
                             }
+
                             self.listTableView.reloadData()
                         }
                     } else {
@@ -146,7 +150,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as? ListTableViewCell else { return UITableViewCell() }
         
         cell.titleLabel.text = "\(listData[indexPath.row].title)"
-        cell.contentLabel.text = "\(listData[indexPath.row].content)"
+        cell.contentLabel.text = "\(listData[indexPath.row].contents)"
         cell.userLabel.text = "\(listData[indexPath.row].writer)"
         cell.listColor = listData[indexPath.row].color
         cell.clearBool = listData[indexPath.row].clear
