@@ -20,6 +20,10 @@
 		4B6B535D28AA7C3F004FEFCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B6B535B28AA7C3F004FEFCF /* LaunchScreen.storyboard */; };
 		4BA3DC2628B4D266007BFA2D /* header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA3DC2528B4D266007BFA2D /* header.swift */; };
 		4BC47EB428B4C09E005C63E2 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC47EB328B4C09E005C63E2 /* Client.swift */; };
+		67184F8728BCFB6F001AAC05 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67184F8628BCFB6F001AAC05 /* CommentsTableViewCell.swift */; };
+		6742DDF628C5FB3E001CC681 /* ListDataAllModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6742DDF528C5FB3E001CC681 /* ListDataAllModel.swift */; };
+		6742DDF828C5FB60001CC681 /* ListDataModelElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6742DDF728C5FB60001CC681 /* ListDataModelElement.swift */; };
+		6742DDFA28C5FB7D001CC681 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6742DDF928C5FB7D001CC681 /* CommentModel.swift */; };
 		678ECA4A28ABCBC90092E744 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678ECA4928ABCBC90092E744 /* LoginViewController.swift */; };
 		67D9A96D28B36292003FF6B5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D9A96C28B36292003FF6B5 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
@@ -39,6 +43,10 @@
 		4B6B535E28AA7C3F004FEFCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BA3DC2528B4D266007BFA2D /* header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = header.swift; sourceTree = "<group>"; };
 		4BC47EB328B4C09E005C63E2 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		67184F8628BCFB6F001AAC05 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
+		6742DDF528C5FB3E001CC681 /* ListDataAllModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataAllModel.swift; sourceTree = "<group>"; };
+		6742DDF728C5FB60001CC681 /* ListDataModelElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataModelElement.swift; sourceTree = "<group>"; };
+		6742DDF928C5FB7D001CC681 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		678ECA4928ABCBC90092E744 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		67D9A96C28B36292003FF6B5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		94F0C6DEC760004801553F21 /* Pods-SharingMyWishlist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharingMyWishlist.release.xcconfig"; path = "Target Support Files/Pods-SharingMyWishlist/Pods-SharingMyWishlist.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,6 +71,9 @@
 			children = (
 				4B3D1DC228B4DE1700A55EC7 /* LoginDataModel.swift */,
 				4B3D1DC628B5189500A55EC7 /* ListDataModel.swift */,
+				6742DDF728C5FB60001CC681 /* ListDataModelElement.swift */,
+				6742DDF528C5FB3E001CC681 /* ListDataAllModel.swift */,
+				6742DDF928C5FB7D001CC681 /* CommentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -80,9 +91,8 @@
 			isa = PBXGroup;
 			children = (
 				4B6B535428AA7C3E004FEFCF /* MainViewController.swift */,
-				4B69601828B6187E0068B04C /* AddListViewController.swift */,
-				4B3D1DC428B511D500A55EC7 /* ListTableViewCell.swift */,
 				4B2EF14128BC55BC0051C745 /* ListDetailViewController.swift */,
+				4B69601828B6187E0068B04C /* AddListViewController.swift */,
 			);
 			path = wishListVC;
 			sourceTree = "<group>";
@@ -113,6 +123,7 @@
 				4BC47EB228B4C083005C63E2 /* HttpClient */,
 				4B69601A28B619030068B04C /* Login&SignUpVC */,
 				4B69601B28B6192D0068B04C /* wishListVC */,
+				6742DDF428C5F9B6001CC681 /* TableViewCell */,
 				4B6B535228AA7C3E004FEFCF /* SceneDelegate.swift */,
 				4B6B535028AA7C3E004FEFCF /* AppDelegate.swift */,
 				4B6B535928AA7C3F004FEFCF /* Assets.xcassets */,
@@ -144,6 +155,15 @@
 				C70771440AB9DE1BAFFD9598 /* Pods_SharingMyWishlist.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6742DDF428C5F9B6001CC681 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4B3D1DC428B511D500A55EC7 /* ListTableViewCell.swift */,
+				67184F8628BCFB6F001AAC05 /* CommentsTableViewCell.swift */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		DBF697C1124024F5D7C08087 /* Pods */ = {
@@ -270,17 +290,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				678ECA4A28ABCBC90092E744 /* LoginViewController.swift in Sources */,
+				6742DDFA28C5FB7D001CC681 /* CommentModel.swift in Sources */,
 				4B6B535528AA7C3E004FEFCF /* MainViewController.swift in Sources */,
 				4BC47EB428B4C09E005C63E2 /* Client.swift in Sources */,
 				4B2EF14228BC55BC0051C745 /* ListDetailViewController.swift in Sources */,
 				4B69601928B6187E0068B04C /* AddListViewController.swift in Sources */,
+				6742DDF628C5FB3E001CC681 /* ListDataAllModel.swift in Sources */,
 				4B3D1DC728B5189500A55EC7 /* ListDataModel.swift in Sources */,
 				4B3D1DC328B4DE1700A55EC7 /* LoginDataModel.swift in Sources */,
 				4B6B535128AA7C3E004FEFCF /* AppDelegate.swift in Sources */,
+				6742DDF828C5FB60001CC681 /* ListDataModelElement.swift in Sources */,
 				4B3D1DC528B511D500A55EC7 /* ListTableViewCell.swift in Sources */,
 				4BA3DC2628B4D266007BFA2D /* header.swift in Sources */,
 				4B6B535328AA7C3E004FEFCF /* SceneDelegate.swift in Sources */,
 				67D9A96D28B36292003FF6B5 /* SignUpViewController.swift in Sources */,
+				67184F8728BCFB6F001AAC05 /* CommentsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
