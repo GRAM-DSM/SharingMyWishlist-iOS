@@ -11,6 +11,7 @@ enum listService {
     case listInfo(listID: Int)
     case listAll
     case listComment(listID: Int, comment: String)
+    case CommentUpRoad(listID: Int, comment: String)
     case listPatchClear(listID: Int)
 }
 
@@ -36,6 +37,8 @@ extension listService: TargetType {
             return "/wish/all"
         case .listComment(let listID, _):
             return "/wish/comment/\(listID)"
+        case .CommentUpRoad(let listID, _):
+            return "/wish/comment/\(listID)"
         case .listPatchClear(let listID):
             return "/wish/clear/\(listID)"
         }
@@ -43,9 +46,9 @@ extension listService: TargetType {
 
     var method: Moya.Method {
         switch self {
-        case .signIn, .signUp, .listCreate, .listComment:
+        case .signIn, .signUp, .listCreate, .CommentUpRoad:
             return .post
-        case .listInfo, .listAll:
+        case .listInfo, .listAll, .listComment:
             return .get
         case .listDelete:
             return .delete
@@ -65,6 +68,8 @@ extension listService: TargetType {
             return .requestJSONEncodable(["title":"\(title)", "contents":"\(contents)", "color":"\(color)"])
         case .listComment(_ , let comment):
             return .requestJSONEncodable(["comment":"\(comment)"])
+        case .CommentUpRoad(_ , let comment):
+            return .requestJSONEncodable(["comment":"\(comment)"])
         case .listDelete, .listInfo, .listAll, .listPatchClear:
             return .requestPlain
         }
@@ -75,7 +80,7 @@ extension listService: TargetType {
             
         case .signIn, .signUp:
             return Header.tokenIsEmpty.header()
-        case .listCreate, .listComment, .listAll, .listDelete, .listInfo, .listPatchClear:
+        case .listCreate, .listComment, .listAll, .listDelete, .listInfo, .listPatchClear, .CommentUpRoad:
             return Header.accessToken.header()
         }
     }
