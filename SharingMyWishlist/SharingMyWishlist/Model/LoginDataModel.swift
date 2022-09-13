@@ -1,5 +1,5 @@
 import Foundation
 
-struct loginDataModel: Codable {
+struct LoginDataModel: Codable {
     let accessToken: String
 }

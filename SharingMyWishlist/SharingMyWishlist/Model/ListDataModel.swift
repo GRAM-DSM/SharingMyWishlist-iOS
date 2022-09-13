@@ -5,7 +5,7 @@ struct ListDataModel: Codable {
 }
 
 //MARK: - listForm
-struct listForm {
+struct ListForm {
     var title, contents, writer, color, createdAt: String
     var clear: Bool
     var id: Int

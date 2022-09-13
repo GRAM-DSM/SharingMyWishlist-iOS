@@ -56,14 +56,14 @@ class LoginViewController : UIViewController {
     @objc func touchLoginButton(){
         guard let userId = idTextField.text, userId.isEmpty == false else { return }
         guard let userPw = passwordTextField.text, userPw.isEmpty == false else { return }
-        
+    
         MY.request(.signIn(userID: userId, password: userPw)) { res in
             switch res {
             case .success(let result):
                 switch result.statusCode {
                 case 200:
                     let decoder = JSONDecoder()
-                    if let data = try? decoder.decode(loginDataModel.self, from: result.data) {
+                    if let data = try? decoder.decode(LoginDataModel.self, from: result.data) {
                         Token.accessToken = data.accessToken
                         DispatchQueue.main.async {
                             self.dismiss(animated: true)
@@ -86,9 +86,9 @@ class LoginViewController : UIViewController {
     }
     private func setUp(){
         view.backgroundColor = .white
-        [logoImageView,idTextField,passwordTextField,loginButton,signupButton].forEach {
-            view.addSubview($0)
-        }
+        [logoImageView,idTextField,passwordTextField,loginButton,signupButton]
+            .forEach { view.addSubview($0) }
+
         logoImageView.snp.makeConstraints {
             $0.top.greaterThanOrEqualToSuperview().inset(125)
             $0.centerX.equalToSuperview()
@@ -126,7 +126,6 @@ class LoginViewController : UIViewController {
     }
 }
 extension UITextField {
-    
     func addLeftPadding() {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: self.frame.height))
         self.leftView = paddingView

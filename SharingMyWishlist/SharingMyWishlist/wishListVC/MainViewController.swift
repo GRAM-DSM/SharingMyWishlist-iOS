@@ -3,7 +3,7 @@ import UIKit
 import SnapKit
 import Then
 
-var listData = [listForm]()
+var listData = [ListForm]()
 
 class MainViewController: UIViewController {
     
@@ -12,49 +12,47 @@ class MainViewController: UIViewController {
     private let listTableView = UITableView().then {
         $0.backgroundColor = .clear
     }
-    
     private let addListButton = UIBarButtonItem().then {
         $0.image = UIImage(systemName: "plus.app")
         $0.action = #selector(addListButtonClick)
     }
-    
     private let logoutButton = UIBarButtonItem().then {
         $0.image = UIImage(systemName: "person.fill.badge.minus")
-        $0.action = #selector(logoutButtonClick)
+        $0.action = #selector(logoutButtonDidTap)
     }
 
     private let refresh = UIRefreshControl()
-    //MARK: - viewDidLoad
 
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableSetting()
         targets()
         listTableView.reloadData()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         getListData()
     }
-    
     override func viewWillLayoutSubviews() {
         makeConstraints()
-        navigationSet()
+        setNavigation()
     }
+
     private func makeConstraints(){
-        [listTableView].forEach( {view.addSubview($0)} )
+        view.addSubview(listTableView)
         view.backgroundColor = .white
-        
+
         listTableView.snp.makeConstraints {
-            $0.width.height.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
     }
-    private func navigationSet(){
+
+    private func setNavigation(){
         navigationItem.title = "Wishes"
         navigationItem.rightBarButtonItem = self.addListButton
         navigationItem.leftBarButtonItem = self.logoutButton
     }
-    
+
     private func targets() {
         refresh.addTarget(self, action: #selector(updateUI(refresh:)), for: .valueChanged)
         addListButton.target = self
@@ -89,7 +87,7 @@ class MainViewController: UIViewController {
                                 let clear = $0.clear
                                 let color = $0.color
                                 let createdAt = $0.createdAt
-                                return listForm(title: title, contents: contents, writer: writer, color: color, clear: clear, id: id, createdAt: createdAt)
+                                return ListForm(title: title, contents: contents, writer: writer, color: color, clear: clear, id: id, createdAt: createdAt)
                             }
 
                             self.listTableView.reloadData()
@@ -116,7 +114,7 @@ class MainViewController: UIViewController {
         self.navigationController?.pushViewController(AddListViewController(), animated: true)
     }
     
-    @objc func logoutButtonClick() {
+    @objc func logoutButtonDidTap() {
         let logoutAlert = UIAlertController(title: "로그아웃", message: "로그아웃 하시겠습니까?", preferredStyle: .actionSheet)
         let alertActionLogout = UIAlertAction(title: "로그아웃", style: .destructive) { _ in
             Token.removeToken()

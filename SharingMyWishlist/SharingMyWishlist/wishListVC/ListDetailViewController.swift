@@ -3,7 +3,7 @@ import Then
 import SnapKit
 
 class ListDetailViewController: UIViewController {
-    var listData: listForm?
+    var listData: ListForm?
     var listComments = ListDataAllModel(commentResponseList: [])
     private let titleLabel = UILabel().then {
         $0.font = UIFont.boldSystemFont(ofSize: 20)
@@ -22,25 +22,33 @@ class ListDetailViewController: UIViewController {
     private let commentsTableView = UITableView().then {
         $0.backgroundColor = .clear
     }
-    
+    private let commentsTextFiled = UITextField().then {
+        $0.font = UIFont.boldSystemFont(ofSize: 20)
+        $0.layer.cornerRadius = 20
+        $0.layer.borderWidth = 1
+    }
+    private let commentsUpRoadButton = UIButton(type: .system).then {
+        $0.layer.cornerRadius = 20
+        $0.layer.borderWidth = 1
+        $0.setTitle("작성", for: .normal)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableSetting()
-        commentsTableView.reloadData()
-        // Do any additional setup after loading the view.
+
+        setTableView()
+        buttonTargets()
     }
     override func viewWillAppear(_ animated: Bool) {
         getComments()
     }
-    
     override func viewWillLayoutSubviews() {
         view.backgroundColor = .white
         listSetting()
         insertData()
     }
-    
-    private func tableSetting() {
+
+    private func setTableView() {
         commentsTableView.delegate = self
         commentsTableView.dataSource = self
         commentsTableView.register(CommentsTableViewCell.self, forCellReuseIdentifier: "CommentsTableViewCell")
@@ -48,11 +56,34 @@ class ListDetailViewController: UIViewController {
         commentsTableView.estimatedRowHeight = UITableView.automaticDimension
         navigationItem.title = "댓글"
     }
-    private func listSetting() {
-        
 
-        [titleLabel, writerLabel, contentLabel, commentsTableView].forEach( {view.addSubview($0)} )
-        
+    private func buttonTargets() {
+        commentsUpRoadButton.addTarget(self, action: #selector(commentsUpRoad), for: .touchUpInside)
+    }
+    @objc func commentsUpRoad() {
+        guard let id = listData?.id else { return }
+        guard let comment = commentsTextFiled.text else { return }
+        MY.request(.CommentUpRoad(listID: id, comment: comment)) { res in
+            switch res {
+            case .success(let result):
+                switch result.statusCode {
+                case 200:
+                    print("성공")
+                    self.commentsTableView.reloadData()
+                    self.getComments()
+                default:
+                    print("list id err")
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+    private func listSetting() {
+
+        [titleLabel, writerLabel, contentLabel, commentsTableView, commentsTextFiled,commentsUpRoadButton]
+            .forEach { view.addSubview($0) }
+
         titleLabel.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(16)
             $0.top.equalTo(view.snp.topMargin).offset(16)
@@ -69,7 +100,19 @@ class ListDetailViewController: UIViewController {
         commentsTableView.snp.makeConstraints {
             $0.top.equalTo(contentLabel.snp.bottom).offset(8)
             $0.left.right.equalToSuperview().inset(20)
+            $0.bottom.equalTo(commentsTextFiled.snp.top)
+        }
+        commentsTextFiled.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(50)
+            $0.left.equalToSuperview().inset(20)
+            $0.right.equalTo(commentsUpRoadButton.snp.left)
+            $0.height.equalTo(80)
+        }
+        commentsUpRoadButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(50)
+            $0.right.equalToSuperview().inset(20)
+            $0.height.width.equalTo(80)
+        
         }
     }
     private func insertData(){
@@ -92,7 +135,6 @@ class ListDetailViewController: UIViewController {
                     if let data = try? decoder.decode(ListDataAllModel.self, from: result.data) {
                         
                         self.listComments.commentResponseList = data.commentResponseList
-                        print(self.listComments.commentResponseList[0].id)
                         self.commentsTableView.reloadData()
                     } else {
                         print("디코드 에러")
@@ -107,6 +149,7 @@ class ListDetailViewController: UIViewController {
 
     }
 }
+
 extension ListDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listComments.commentResponseList.count

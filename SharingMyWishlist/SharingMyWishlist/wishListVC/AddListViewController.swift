@@ -75,21 +75,19 @@ class AddListViewController: UIViewController {
         $0.layer.cornerRadius = 8
         $0.tag = 4
     }
-    
-    //MARK: - ViewDidLoad
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         target()
     }
-    
-    //MARK: - ViewWillAppear
-
     override func viewWillAppear(_ animated: Bool) {
+        setNavigation()
+    }
+    override func viewWillLayoutSubviews() {
         addListSetting()
     }
-    
+
     private func target() {
         whiteColorButton.addTarget(self, action: #selector(selectColorButton(_:)), for: .touchUpInside)
         redColorButton.addTarget(self, action: #selector(selectColorButton(_:)), for: .touchUpInside)
@@ -99,16 +97,12 @@ class AddListViewController: UIViewController {
         okButton.target = self
         cancelButton.target = self
     }
-    
-    //MARK: - Setting
 
+    //MARK: - Setting
     private func addListSetting() {
-        view.backgroundColor = .white
-        navigationItem.title = "Add"
-        navigationItem.rightBarButtonItem = okButton
-        navigationItem.leftBarButtonItem = cancelButton
         
-        [titleLabel, contentLabel, titleTextField, contentTextView, whiteColorButton, redColorButton, greenColorButton, blueColorButton].forEach({ self.view.addSubview($0) })
+        [titleLabel, contentLabel, titleTextField, contentTextView,
+         whiteColorButton, redColorButton, greenColorButton, blueColorButton].forEach { view.addSubview($0) }
         
         titleLabel.snp.makeConstraints {
             $0.top.lessThanOrEqualToSuperview().inset(100)
@@ -160,7 +154,13 @@ class AddListViewController: UIViewController {
             $0.bottom.equalTo(whiteColorButton.snp.bottom)
         }
     }
-    
+
+    private func setNavigation() {
+        view.backgroundColor = .white
+        navigationItem.title = "Add"
+        navigationItem.rightBarButtonItem = okButton
+        navigationItem.leftBarButtonItem = cancelButton
+    }
     //MARK: - ButtonLayerFunction
 
     @objc func selectColorButton(_ sender: UIButton) {
