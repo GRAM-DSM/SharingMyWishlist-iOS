@@ -9,7 +9,7 @@ class ListTableViewCell: UITableViewCell {
     var clearBool: Bool = false
     
     //MARK: - Items
-    
+
     //Labels
     let titleLabel = UILabel().then {
         $0.text = "title"
@@ -41,7 +41,7 @@ class ListTableViewCell: UITableViewCell {
     //MARK: - LayoutSubviews
     
     override func layoutSubviews() {
-        cellStting()
+        cellSetting()
         targetSetting()
     }
     
@@ -54,12 +54,12 @@ class ListTableViewCell: UITableViewCell {
     }
     
     //MARK: - Setting
-    
-    private func cellStting() {
+
+    private func cellSetting() {
         clearButton.setImage(UIImage(systemName: "checkmark.square\(clearBool ? ".fill" : "")"), for: .normal)
         self.addSubview(backView)
         backView.backgroundColor = UIColor(named: "\(listColor)")
-        [titleLabel, userLabel, contentLabel, clearButton].forEach( {backView.addSubview($0)} )
+        [titleLabel, userLabel, contentLabel, clearButton].forEach { backView.addSubview($0) }
         
         titleLabel.snp.makeConstraints {
             $0.topMargin.equalTo(5)
@@ -97,7 +97,7 @@ class ListTableViewCell: UITableViewCell {
     private func targetSetting() {
         clearButton.addTarget(self, action: #selector(clearButtonClick), for: .touchUpInside)
     }
-    
+
     //ClickEventFunction
     @objc func clearButtonClick() {
         MY.request(.listPatchClear(listID: listID)) { res in
@@ -121,5 +121,4 @@ class ListTableViewCell: UITableViewCell {
             }
         }
     }
-    
 }
