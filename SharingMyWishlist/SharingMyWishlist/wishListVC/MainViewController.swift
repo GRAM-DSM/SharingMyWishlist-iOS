@@ -28,7 +28,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         tableSetting()
         targets()
-        listTableView.reloadData()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         getListData()
@@ -60,6 +60,7 @@ class MainViewController: UIViewController {
     }
     
     private func tableSetting() {
+        listTableView.reloadData()
         listTableView.delegate = self
         listTableView.dataSource = self
         listTableView.register(ListTableViewCell.self, forCellReuseIdentifier: "ListTableViewCell")
