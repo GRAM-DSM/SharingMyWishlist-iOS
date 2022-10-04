@@ -13,7 +13,10 @@ class ListDetailViewController: UIViewController {
     private let writerLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 14)
         $0.textColor = UIColor.gray
-        
+    }
+    private let createdAtLabel = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 14)
+        $0.textColor = UIColor.gray
     }
     private let contentLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16)
@@ -24,12 +27,17 @@ class ListDetailViewController: UIViewController {
     }
     private let commentsTextFiled = UITextField().then {
         $0.font = UIFont.boldSystemFont(ofSize: 20)
-        $0.layer.cornerRadius = 20
+        $0.layer.cornerRadius = 10
         $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor(red: 0.898, green: 0.898, blue: 0.918, alpha: 1).cgColor
+        $0.backgroundColor = UIColor(red: 0.976, green: 0.976, blue: 0.976, alpha: 1)
+        $0.addLeftPadding()
     }
     private let commentsUpRoadButton = UIButton(type: .system).then {
-        $0.layer.cornerRadius = 20
+        $0.layer.cornerRadius = 12
         $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor(red: 0.898, green: 0.898, blue: 0.918, alpha: 1).cgColor
+        $0.backgroundColor = UIColor(red: 0.976, green: 0.976, blue: 0.976, alpha: 1)
         $0.setTitle("작성", for: .normal)
     }
 
@@ -81,7 +89,7 @@ class ListDetailViewController: UIViewController {
     }
     private func listSetting() {
 
-        [titleLabel, writerLabel, contentLabel, commentsTableView, commentsTextFiled,commentsUpRoadButton]
+        [titleLabel, writerLabel, contentLabel, commentsTableView, commentsTextFiled,commentsUpRoadButton, createdAtLabel]
             .forEach { view.addSubview($0) }
 
         titleLabel.snp.makeConstraints {
@@ -93,26 +101,31 @@ class ListDetailViewController: UIViewController {
             $0.top.equalTo(titleLabel.snp.bottom).offset(12)
             $0.left.right.equalToSuperview().inset(16)
         }
+        createdAtLabel.snp.makeConstraints {
+            $0.top.equalTo(view.snp.topMargin).offset(16)
+            $0.left.equalToSuperview().inset(76)
+        }
         contentLabel.snp.makeConstraints {
             $0.top.equalTo(writerLabel.snp.bottom).offset(12)
             $0.left.right.equalToSuperview().inset(16)
         }
         commentsTableView.snp.makeConstraints {
-            $0.top.equalTo(contentLabel.snp.bottom).offset(8)
+            $0.top.equalTo(commentsTextFiled.snp.bottom).offset(10)
             $0.left.right.equalToSuperview().inset(20)
-            $0.bottom.equalTo(commentsTextFiled.snp.top)
+            $0.bottom.equalToSuperview()
         }
         commentsTextFiled.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(50)
-            $0.left.equalToSuperview().inset(20)
-            $0.right.equalTo(commentsUpRoadButton.snp.left)
-            $0.height.equalTo(80)
+            $0.top.equalTo(contentLabel.snp.bottom).offset(21)
+            $0.left.equalToSuperview().inset(10)
+            $0.height.equalTo(44)
+            $0.width.greaterThanOrEqualTo(267)
         }
         commentsUpRoadButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(50)
-            $0.right.equalToSuperview().inset(20)
-            $0.height.width.equalTo(80)
-        
+            $0.top.equalTo(contentLabel.snp.bottom).offset(21)
+            $0.left.equalTo(commentsTextFiled.snp.right).offset(6)
+            $0.height.equalTo(44)
+            $0.width.equalTo(82)
+            $0.right.equalToSuperview().inset(10)
         }
     }
     private func insertData(){
@@ -120,6 +133,7 @@ class ListDetailViewController: UIViewController {
             titleLabel.text = listData.title
             writerLabel.text = listData.writer
             contentLabel.text = listData.contents
+            createdAtLabel.text = listData.createdAt
         } else {
             print("error")
         }
@@ -159,6 +173,7 @@ extension ListDetailViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentsTableViewCell", for: indexPath) as? CommentsTableViewCell else { return UITableViewCell() }
         cell.commentsLabel.text = listComments.commentResponseList[indexPath.row].comment
         cell.userLabel.text = listComments.commentResponseList[indexPath.row].nickName
+        cell.createdAtLabel.text = listComments.commentResponseList[indexPath.row].createdAt
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

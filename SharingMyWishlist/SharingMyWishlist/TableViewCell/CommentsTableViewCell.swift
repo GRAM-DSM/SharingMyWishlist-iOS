@@ -13,6 +13,11 @@ class CommentsTableViewCell: UITableViewCell {
         $0.font = UIFont.systemFont(ofSize: 20)
         $0.numberOfLines = 3
     }
+    let createdAtLabel = UILabel().then {
+        $0.text = "createdAt"
+        $0.font = UIFont.systemFont(ofSize: 18)
+        $0.textColor = .darkGray
+    }
 
     //MARK: - LayoutSubviews
     override func layoutSubviews() {
@@ -29,9 +34,13 @@ class CommentsTableViewCell: UITableViewCell {
     
     //MARK: - Setting
     private func cellStting() {
-        [userLabel, commentsLabel].forEach { self.addSubview($0) }
+        [userLabel, commentsLabel, createdAtLabel].forEach { self.addSubview($0) }
         userLabel.snp.makeConstraints {
             $0.left.equalToSuperview().inset(50)
+            $0.top.equalToSuperview()
+        }
+        createdAtLabel.snp.makeConstraints {
+            $0.left.equalTo(userLabel.snp.right).offset(12)
             $0.top.equalToSuperview()
         }
         commentsLabel.snp.makeConstraints {
